@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter, Link } from 'react-router-dom'
-// import Navbar from 'react-bootstrap/Navbar'
+import { Link } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 
 // import socket.io to establish socket connection with server
@@ -10,23 +9,20 @@ import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 
 import '../../pages/thirdPage.scss'
 
-// const channelStyle = {
-//   outline: 'none'
-// }
+const channelStyle = {
+  outline: 'none'
+}
 
-// let socketUrl
-// const socketUrls = {
-//   production: 'wss://aqueous-atoll-85096.herokuapp.com',
-//   development: 'ws://localhost:4741'
-// }
-// // const socket = io(socketUrl, {
-// //   // reconnection: false
-// // })
-// if (window.location.hostname === 'localhost') {
-//   socketUrl = socketUrls.development
-// } else {
-//   socketUrl = socketUrls.production
-// }
+let socketUrl
+const socketUrls = {
+  production: 'wss://aqueous-atoll-85096.herokuapp.com',
+  development: 'ws://localhost:4741'
+}
+if (window.location.hostname === 'localhost') {
+  socketUrl = socketUrls.development
+} else {
+  socketUrl = socketUrls.production
+}
 class Chats extends Component {
   constructor (props) {
     super(props)
@@ -101,7 +97,6 @@ class Chats extends Component {
     const { msgAlert } = this.props
 
     const { user } = this.props
-
     createMessage(this.state.chat, user)
       .then(response => {
         this.setState({
@@ -135,7 +130,17 @@ class Chats extends Component {
       })
   }
 
-  onMessageDelete = (event) => {
+  // handleInputChange = (event) => {
+  //   event.persist()
+  //   this.setState(prevState => {
+  //     const updatedField = {
+  //       [event.target.name]: event.target.value
+  //     }
+  //     const updatedData = Object.assign({}, prevState.chat, updatedField)
+  //     return { chat: updatedData }
+  //   })
+  // }
+  onCreateMessage = (event) => {
     event.preventDefault()
     const chatId = event.target.name
 
@@ -165,33 +170,58 @@ class Chats extends Component {
         })
       })
   }
-
-  // onChangeColor () {
-  //   const color = document.getElementById('InputText').value
-  //   document.body.style.backgroundColor = color
+  // Begin New Message Component, may be moved to it's own page
+  // handleInputChange = (event) => {
+  //   event.persist()
+  //   this.setState(prevState => {
+  //     const updatedField = {
+  //       [event.target.name]: event.target.value
+  //     }
+  //     const updatedData = Object.assign({}, prevState.chat, updatedField)
+  //     return { chat: updatedData }
+  //   })
   // }
 
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
-        <p className='chatTextStyle'>{chat.text}</p>
-        <button name={chat._id} onClick={this.onMessageDelete}>Delete</button>
-        <Link to={'/update/' + chat._id}>edit</Link>
+        <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
       </li>
     ))
-
-    // const changeColor = (
-    //   <input type="text" id="InputText">
-    //     <input type="color" id="InputColor">
-    //       <input type="button" id="colorButton" value="select color" onClick="changeColor()">
-    //       </input>
-    //     </input>
-    //   </input>
-    // )
     return (
       <div>
-        <form onSubmit={this.onCreateMessage} className="typeMessageForm">
+        {/* <ul>
+          {chats}
+        </ul> */}
+        <div>
+          {/* <h1>(username)</h1> */}
+          {/* <form onSubmit={this.onCreateMessage}>
+            <textarea
+              className="typeMessage"
+              placeholder="chat away..."
+              name="text"
+              value={this.state.chat.text}
+              onChange={this.handleInputChange}
+            />
+            <button type="submit">Send</button>
+          </form> */}
+        </div>
+        {/* <ThirdTitle /> */}
+        <p
+          className="channels">
+          CHANNELS
+          <button type="button" className="channel1" style={channelStyle}>English1</button>
+          <button type="button" className="channel2" style={channelStyle}>English2</button>
+          <button type="button" className="channel3" style={channelStyle}>Spanish1</button>
+          <button type="button" className="channel4" style={channelStyle}>Spanish2</button>
+          <button type="button" className="channel5" style={channelStyle}>Japanese1</button>
+          <button type="button" className="channel6" style={channelStyle}>Japanese2</button>
+        </p>
+        <form onSubmit={this.onCreateMessage}>
           <div className="chat">
+            <ul className="chatArray">
+              {chats}
+            </ul>
             <textarea
               className="typeMessage"
               placeholder="Type A Message Here"
@@ -200,14 +230,11 @@ class Chats extends Component {
               onChange={this.handleInputChange}
             />
             <button type="submit" className="sendMessageButton"></button>
-            <output type="text" name="chat[text]" className="sentMessage">
-              <ul className="chatArray">
-                {chats}
-                {/* {changeColor} */}
-              </ul>
-            </output>
+            {/* <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea> */}
+            <output type="text" name="chat[text]" className="sentMessage">LOOOL</output>
           </div>
         </form>
+        <p className="profile"></p>
       </div>
     )
   }
