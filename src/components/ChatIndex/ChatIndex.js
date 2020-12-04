@@ -236,7 +236,7 @@ class Chats extends Component {
             </output>
           </div>
         </form>
-        <p className="profile">MISC</p>
+        <p className="misc">MISC</p>
       </div>
     )
   }
