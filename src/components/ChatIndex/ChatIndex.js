@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
@@ -11,6 +12,12 @@ import '../../pages/thirdPage.scss'
 import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 
 import '../../pages/thirdPage.scss'
+
+const navBarHomeStyle = {
+  color: 'white',
+  borderRadius: '30%',
+  top: '-15%'
+}
 
 let socketUrl
 const socketUrls = {
@@ -139,7 +146,7 @@ class Chats extends Component {
     const { user } = this.props
 
     chatDelete(this.chats._id, user)
-    console.log('this is the id ' + this.chats.id)
+    // console.log('this is the id ' + this.chats.id)
       .then(response => {
         this.setState({
           deleteId: response.data._id
@@ -171,43 +178,16 @@ class Chats extends Component {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
         <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-        <button onClick={this.onMessageDelete}>Delete</button>
+        <button onClick={this.onMessageDelete}>Delete </button>
         <Link to={'/chat-update/' + chat._id}>Update Chat </Link>
         <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
       </li>
     ))
     return (
       <div>
-        <div>
-          {/* <h1>(username)</h1> */}
-          {/* <form onSubmit={this.onCreateMessage}>
-            <textarea
-              className="typeMessage"
-  render () {
-    const chats = this.state.chats.map(chat => (
-      <li key={chat._id}>
-        <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-      </li>
-    ))
-    return (
-      <div>
-        <ul>
-          {chats}
-        </ul>
-        <div>
-          <h1>(username)</h1>
-          <form onSubmit={this.onCreateMessage}>
-            <input
-              placeholder="chat away..."
-              name="text"
-              value={this.state.chat.text}
-              onChange={this.handleInputChange}
-            />
-            <button type="submit">Send</button>
-          </form> */}
-        </div>
-        {/* <ThirdTitle /> */}
-
+        <Navbar.Brand href="#/chats" style={navBarHomeStyle}>
+          Home
+        </Navbar.Brand>
         <p
           className="channels">
           CHANNELS
