@@ -30,6 +30,6 @@ export const chatDelete = (user, chatId) => {
     headers: {
       Authorization: `Bearer ${user.token}`
     },
-    data: { chat: chat }
+    data: data._id
   })
 }
