@@ -1,0 +1,12 @@
+@import '~bootstrap/scss/bootstrap';
+
+.updateChannelTitle {
+  animation: titleColor 10s infinite;
+  @keyframes titleColor {
+    0% { color: cyan }
+    25% { color: red }
+    50% { color: purple }
+    75% { color: green }
+    100% { color: cyan }
+  }
+}

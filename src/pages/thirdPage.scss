@@ -3,19 +3,19 @@ body {
   overflow: hidden;
 }
 
-.createdchannels {
+.createdChannels {
   fill-opacity: 1;
   display: flex;
   flex-direction: column;
   justify-content: left;
   border-top: 5px solid rgb(150, 55, 59);
   width: 25vw;
-  height: 60vh;
+  height: 50vh;
   font-size: 50px;
   text-align: center;
   position: absolute;
   left: 0%;
-  bottom: 30%;
+  top: 9%;
   color: red;
   background-color: black;
   overflow: auto;
@@ -29,32 +29,39 @@ body {
   border-right: 5px solid rgb(150, 55, 59);
   border-top: 5px solid rgb(150, 55, 59);
   width: 75vw;
-  height: 100vh;
+  height: 82vh;
   font-size: 50px;
   text-align: center;
   position: absolute;
   left: 25%;
-  bottom: -10%;
+  bottom: 9%;
   color: blue;
   background-color: black;
   overflow: auto;
 }
 
-.misc {
-  font-size: 50px;
-  text-align: center;
-  position: absolute;
-  right: 0%;
-  color: green;
-}
+  .misc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 5px solid rgb(150, 55, 59);
+    width: 25vw;
+    height: 100vh;
+    font-size: 50px;
+    text-align: center;
+    position: absolute;
+    right: 0%;
+    color: green;
+    background-color: black;
+  }
 
 .typeMessage {
   outline: none;
-  height: 15%;
+  height: 20%;
   width: 85%;
   position: absolute;
   left: 0%;
-  bottom: 10%;
+  bottom: 0%;
   background-color: transparent;
   font-size: 70%;
   color: white;
@@ -66,20 +73,20 @@ body {
 
 .sendMessageButton {
   outline: none;
-  height: 15%;
+  height: 20%;
   width: 15%;
   background-image: url('https://image.flaticon.com/icons/png/512/60/60525.png');
+  background-size: cover;
   background-color: white;
   border-top: 3px solid rgb(150, 55, 59);
   border-bottom: none;
   border-left: none;
   border-right: none;
-  background-size: cover;
   background-position: absolute;
   background-position-x: 80%;
-  background-position-y: -20px;
+  background-position-y: -5px;
   position: absolute;
-  bottom: 10%;
+  bottom: 0%;
   right: 0%;
 }
 
@@ -91,10 +98,10 @@ body {
   word-break: break-all;
   color: white;
   width: 100%;
-  height: 75%;
+  height: 80%;
   position: absolute;
   right: 0%;
-  bottom: 25%;
+  bottom: 20%;
   overflow: auto;
   &:hover{
     color: red;
@@ -104,10 +111,9 @@ body {
 .chatArray {
   text-align: center;
   position: absolute;
-  top: 0%;
-  left: 25%;
-  right: 25%;
-  bottom: 0%;
+  top: 0vh;
+  left: 20%;
+  right: 30%;
   color: black;
   font-size: 20px;
 }
@@ -149,10 +155,12 @@ body {
 }
 
 .channelsCreated {
-  border: 3px solid black;
+  font-size: 18px;
+  color: transparent;
   position: absolute;
   top: 70%;
   left: 3%;
+  bottom: 0%;
   width: 20vw;
   height: 50%;
   overflow: auto;
@@ -169,15 +177,39 @@ body {
   justify-content: left;
   border-top: 5px solid rgb(150, 55, 59);
   width: 25vw;
-  height: 50vh;
+  height: 32vh;
   font-size: 50px;
   text-align: center;
   position: absolute;
-  top: 65%;
+  bottom: 9%;
   left: 0%;
   color: red;
   overflow: auto;
   background-color: black;
+}
+
+.deleteButton {
+  color: red;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  background-color: unset;
+    &:hover {
+      color: green;
+      text-decoration: none;
+    }
+}
+
+.editButton {
+  color: cyan;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  background-color: unset;
+    &:hover{
+      color: green;
+      text-decoration: none;
+    }
 }
 
 .channel1 {

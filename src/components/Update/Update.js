@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { chatUpdate } from '../../api/chat'
 
+const updateTitle = {
+  color: 'white'
+}
+
 const UpdateChat = props => {
   const [chat, setChat] = useState({ text: '' })
   const [updated, setUpdated] = useState(false)
@@ -10,6 +14,7 @@ const UpdateChat = props => {
   const handleChange = (event) => {
     const updatedField = { [event.target.name]: event.target.value }
     setChat(oldChat => {
+      console.log('old chat ' + oldChat)
       const updatedChat = { ...oldChat, ...updatedField }
       return updatedChat
     })
@@ -46,7 +51,7 @@ const UpdateChat = props => {
 
   return (
     <React.Fragment>
-      <h1>Update Message</h1>
+      <h1 style={updateTitle}>Update Message</h1>
       <form onSubmit={handleSubmit}>
         <input
           placeholder="Edit Message"
