@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 
 // import socket.io to establish socket connection with server
-// import io from 'socket.io-client'
+import io from 'socket.io-client'
 
 import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 import ChannelsCreated from '../ChannelsCreated/ChannelsCreated'
@@ -21,7 +21,7 @@ import '../../pages/thirdPage.scss'
 
 let socketUrl
 const socketUrls = {
-  production: 'wss://mychatroomm.herokuapp.com/',
+  production: 'wss://chatroommm.herokuapp.com',
   development: 'ws://localhost:4741'
 }
 // const socket = io(socketUrl, {
@@ -63,9 +63,9 @@ class Chats extends Component {
         })
       })
     // Initialize the Server Side Socket
-    // const socket = io(socketUrl, {
-    //   reconnection: false
-    // })
+    const socket = io(socketUrl, {
+      reconnection: false
+    })
     // define what you will be listening for here
     socket.on('connect', () => {
       socket.emit('join')

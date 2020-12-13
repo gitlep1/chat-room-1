@@ -8,9 +8,9 @@ Whispers is an instant messaging application that uses React to facilitate authe
 
 [Deployed Client](https://mandeloreann.github.io/chat-room/)
 
-[Back-End Repo](https://github.com/Mandeloreann/chat-room-express-2)
+[Back-End Repo](https://github.com/gitlep1/chat-room-express-2)
 
-[Deployed Back-End](https://chatroommm.herokuapp.com/)
+[Deployed Back-End](https://mychatroomm.herokuapp.com/)
 
 ---
 
