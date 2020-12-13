@@ -14,7 +14,6 @@ const UpdateChat = props => {
   const handleChange = (event) => {
     const updatedField = { [event.target.name]: event.target.value }
     setChat(oldChat => {
-      console.log('old chat ' + oldChat)
       const updatedChat = { ...oldChat, ...updatedField }
       return updatedChat
     })

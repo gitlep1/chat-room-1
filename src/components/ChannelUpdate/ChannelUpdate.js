@@ -13,7 +13,6 @@ const UpdateChannel = props => {
     const updatedField = { [event.target.name]: event.target.value }
     setChannel(oldChannel => {
       const updatedChannel = { ...oldChannel, ...updatedField }
-      console.log('old channel' + oldChannel)
       return updatedChannel
     })
   }
