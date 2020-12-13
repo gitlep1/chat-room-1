@@ -105,6 +105,8 @@ class Chats extends Component {
             this.setState({ chats: res.data.chats })
           })
       })
+      .then(() => this.setState({ chat: {
+        text: '' } }))
       .then(() => msgAlert({
         heading: 'Sent!',
         message: messages.createMessageSuccess,
@@ -128,7 +130,8 @@ class Chats extends Component {
 
     chatDelete(this.props.user, chatId)
       .then(() => {
-        this.setState({ text: '' })
+        this.setState({ chat: {
+          text: '' } })
         this.props.msgAlert({
           heading: 'Message Deleted!',
           message: messages.deleteMessageSuccess,
@@ -143,7 +146,7 @@ class Chats extends Component {
       })
       .catch(error => {
         this.props.msgAlert({
-          heading: 'Message delete failed ' + error.message,
+          heading: 'You are not the owner of this message ' + error.message,
           message: messages.deleteMessageFailure,
           variant: 'danger'
         })
