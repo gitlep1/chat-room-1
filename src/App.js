@@ -5,16 +5,18 @@ import { v4 as uuid } from 'uuid'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import ChatIndex from './components/ChatIndex/ChatIndex'
 import ChannelIndex from './components/ChannelIndex/ChannelIndex'
+import UpdateChat from './components/Update/Update'
 import FirstPage from './pages/firstPage'
 import SecondPage from './pages/secondPage'
-// import ThirdPage from './pages/thirdPage'
-// import colorPicker from './settings/colorPicker'
+import colorPicker from './settings/colorPicker'
+import UpdateChannel from './components/ChannelUpdate/ChannelUpdate'
 
 class App extends Component {
   constructor () {
@@ -66,6 +68,7 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
+          <Route path='/' component={Footer} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
           )} />
@@ -78,25 +81,40 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/chats' render={() => (
             <div>
               <ChatIndex msgAlert={this.msgAlert} user={user} />
-              {/* <ChatCreate msgAlert={this.msgAlert} user={user} /> */}
             </div>
           )} />
-          {/* <AuthenticatedRoute user={user} path='/channel-update/:channelId' render={({ match, history }) => (
-            <UpdateChannel
+          {/* <AuthenticatedRoute user={user} path='/chat-update/:chatId' render={({ match, history }) => (
+            <UpdateChat
               match={match}
               history={history}
               user={user}
               msgAlert={this.msgAlert}
             />
           )}/> */}
+          <AuthenticatedRoute user={user} exact path='/update/:chatId' render={({ match, history }) => (
+            <UpdateChat
+              match={match}
+              history={history}
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
           <AuthenticatedRoute user={user} path='/channelCreator' render={() => (
             <div>
               <ChannelIndex msgAlert={this.msgAlert} user={user} />
             </div>
-          )} />
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/channelUpdate/:channelId' render={({ match, history }) => (
+            <UpdateChannel
+              match={match}
+              history={history}
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
         </main>
         <Route exact path="/channels" component={SecondPage} />
-        {/* <Route exact path="/settings" component={colorPicker} /> */}
+        <Route exact path="/settings" component={colorPicker} />
         {/* <Route exact path="/chats" component={ThirdPage} /> */}
       </Fragment>
     )

@@ -6,7 +6,7 @@ export const createChannel = (channel, user) => {
     method: 'POST',
     url: apiUrl + '/channelCreator',
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     },
     data: { channel }
   })
@@ -17,7 +17,7 @@ export const channelIndex = user => {
     method: 'GET',
     url: apiUrl + '/channelCreator',
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     }
   })
 }
@@ -27,28 +27,28 @@ export const channelDelete = (user, channelId) => {
     method: 'DELETE',
     url: apiUrl + '/channelCreator/' + channelId,
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     }
   })
 }
 
-export const channelUpdate = (updateChannelData, channelId, user) => {
+export const channelUpdate = (user, channel, id) => {
   return axios({
     method: 'PATCH',
-    url: apiUrl + '/chats/' + channelId,
+    url: apiUrl + '/channelCreator/' + id,
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     },
-    data: { updateChannelData }
+    data: { channel: channel }
   })
 }
 
 export const showChannels = (user, channelId) => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/chats/' + channelId,
+    url: apiUrl + '/channelCreator/' + channelId,
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     }
   })
 }
