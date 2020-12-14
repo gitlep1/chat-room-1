@@ -62,17 +62,18 @@ class Chats extends Component {
           message: 'Chat Error Message: ' + err.message
         })
       })
+      
     // Initialize the Server Side Socket
-    const socket = io(socketUrl, {
-      reconnection: false
-    })
-    // define what you will be listening for here
-    socket.on('connect', () => {
-      socket.emit('join')
-    })
-    // Alert Other Users this User Has Disconnected/Closed the Page
-    socket.on('disconnect', () => {
-    })
+    // const socket = io(socketUrl, {
+    //   reconnection: false
+    // })
+    // // define what you will be listening for here
+    // socket.on('connect', () => {
+    //   socket.emit('join')
+    // })
+    // // Alert Other Users this User Has Disconnected/Closed the Page
+    // socket.on('disconnect', () => {
+    // })
   }
 
   handleInputChange = (event) => {
