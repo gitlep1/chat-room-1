@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 
 // import socket.io to establish socket connection with server
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 
 import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 import ChannelsCreated from '../ChannelsCreated/ChannelsCreated'
@@ -62,7 +62,6 @@ class Chats extends Component {
           message: 'Chat Error Message: ' + err.message
         })
       })
-      
     // Initialize the Server Side Socket
     // const socket = io(socketUrl, {
     //   reconnection: false
@@ -75,7 +74,6 @@ class Chats extends Component {
     // socket.on('disconnect', () => {
     // })
   }
-
   handleInputChange = (event) => {
     event.persist()
 
