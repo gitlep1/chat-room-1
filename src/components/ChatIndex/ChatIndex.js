@@ -19,19 +19,19 @@ import '../../pages/thirdPage.scss'
 //   top: '-15%'
 // }
 
-let socketUrl
-const socketUrls = {
-  production: 'wss://mychatroomm.herokuapp.com',
-  development: 'ws://localhost:4741'
-}
-// const socket = io(socketUrl, {
-//   reconnection: false
-// })
-if (window.location.hostname === 'localhost') {
-  socketUrl = socketUrls.development
-} else {
-  socketUrl = socketUrls.production
-}
+// let socketUrl
+// const socketUrls = {
+//   production: 'wss://mychatroomm.herokuapp.com',
+//   development: 'ws://localhost:4741'
+// }
+// // const socket = io(socketUrl, {
+// //   reconnection: false
+// // })
+// if (window.location.hostname === 'localhost') {
+//   socketUrl = socketUrls.development
+// } else {
+//   socketUrl = socketUrls.production
+// }
 
 class Chats extends Component {
   constructor (props) {
