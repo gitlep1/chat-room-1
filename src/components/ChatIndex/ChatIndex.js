@@ -21,7 +21,7 @@ import '../../pages/thirdPage.scss'
 
 let socketUrl
 const socketUrls = {
-  production: 'wss://chatroommm.herokuapp.com',
+  production: 'wss://mychatroomm.herokuapp.com',
   development: 'ws://localhost:4741'
 }
 // const socket = io(socketUrl, {
